@@ -54,25 +54,29 @@ men():- man(X), print(X), nl, fail.
 women():- woman(X), print(X), nl, fail.
 
 %Построить предикат, который children(X), который выводит всех детей X.
+%children(+X)
 children(X):- parent(X,Y), print(Y), nl, fail.
 
-mother(X,Y):- woman(X), parent(X,Y).
+%Построить предикат mother(X, Y), который проверяет, является ли X матерью Y.
+%mother(+X, +Y)
+mother(X,Y):- parent(X,Y), woman(X).
+
+%Построить предикат, mother(+X), который выводит маму X.
+%mother(+X)
 mother(X):- mother(Y,X), print(Y), nl, fail.
 
-max(X,Y,Z):-(
-     X>=Y -> Z is X;
-     Y>X -> Z is Y
-    ).
+%Построить предикат brother(X, Y), который проверяет, является ли X братом Y.
+%brother(+X,+Y)
+brother(X,Y):- parent(Z,Y), parent(Z,X), man(X), man(Z), X\=Y.
 
-fact(0,1).
-fact(N,X):- N>0,
-    N1 is N-1, fact(N1,X1), X is N*X1.
+%Построить предикат brothers(X), который выводит всех братьев X.
+%brothers(+X)
+brothers(X):- brother(Z,X),print(Z), nl, fail.
 
-fact2(0,X,X).
-fact2(N,A,X):- N>0,
-    A1 is N*A,
-    N1 is N-1,
-    fact2(N1,A1,X).
+%Построить предикат b_s(X,Y), который проверяет, являются ли X и Y родными братом и сестрой или братьями или сестрами.
+%b_s(+X,+Y)
+b_s(X,Y):- parent(Z,Y), parent(Z,X), man(Z), X\=Y.
 
-call_fact2(N,X):- fact2(N,1,X).
-
+%Построить предикат b_s(X), который выводит всех братьев или сестер X.
+%b_s(+X)
+b_s(X):- b_s(Z,X),print(Z), nl, fail.
