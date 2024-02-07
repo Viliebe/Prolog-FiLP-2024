@@ -53,4 +53,13 @@ parent(zhdana,zlatomir).
 daughter(X,Y):- parent(Y,X), woman(X).
 
 %Построить предикат, daughter(X), который выводит дочь X.
-daughter(X):- parent(X,Y), woman(X), print(X), nl, fail.
+%daughter(+X)
+daughter(X):- daughter(Z,X), print(Z),!.
+
+%Построить предикат husband(X, Y), который проверяет, является ли X мужем Y.
+%husband(+X,+Y)
+husband(X,Y):-parent(X,Z), parent(Y,Z), man(X).
+
+%Построить предикат husband(X), который выводит мужа X.
+%husband(+X)
+husband(X):=husband(Z,X),!.
