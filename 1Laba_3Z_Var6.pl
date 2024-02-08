@@ -75,9 +75,17 @@ grand_mas(X):- parent(Z,Y), parent(Y,X), print(Z), nl, fail.
 %grand_ma_and_da(+X,+Y)
 grand_ma_and_da(X,Y):- parent(Y,Z), parent(Z,X), woman(X), woman(Y); parent(X,Z), parent(Z,Y), woman(Y), woman(X).
 
+%Построить предикат grand_ma_and_da(X,Y), который проверяет, являются ли X и Y бабушкой и внучкой или внучкой и бабушкой. С использованием готовых предикатов.
+%grand_ma_and_da(+X,+Y)
+grand_ma_and_da(X,Y):- grand_ma(X,Y); grand_ma(Y,X), woman(Y).
+
 %Построить предикат, который проверяет, является ли X тетей Y. Без использования готовых предикатов.
 %aunt(+X,+Y)
 aunt(X,Y):- parent(Z,Y), parent(V,Z), parent(V,X), woman(X), woman(Z), woman(V), X\=Z.
+
+%Построить предикат, который проверяет, является ли X тетей Y. С использованием готовых предикатов.
+%aunt(+X,+Y)
+aunt(X,Y):- grand_ma(Z,Y), parent(Z,V), woman(X).
 
 %Построить предикат, который выводит всех тетей X. Без использования готовых предикатов.
 %aunts(+X)
