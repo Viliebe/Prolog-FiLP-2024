@@ -48,15 +48,15 @@ parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
 
-%Построить предикат daughter(X, Y), который проверяет, является ли X дочерью Y.
-%daughter(+X, +Y)
+%Построить предикат daughter(X,Y), который проверяет, является ли X дочерью Y.
+%daughter(+X,+Y)
 daughter(X,Y):- parent(Y,X), woman(X).
 
 %Построить предикат, daughter(X), который выводит дочь X.
 %daughter(+X)
 daughter(X):- daughter(Z,X), print(Z),!.
 
-%Построить предикат husband(X, Y), который проверяет, является ли X мужем Y.
+%Построить предикат husband(X,Y), который проверяет, является ли X мужем Y.
 %husband(+X,+Y)
 husband(X,Y):-parent(X,Z), parent(Y,Z), man(X).
 
