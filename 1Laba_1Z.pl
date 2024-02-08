@@ -57,7 +57,7 @@ women():- woman(X), print(X), nl, fail.
 %children(+X)
 children(X):- parent(X,Y), print(Y), nl, fail.
 
-%Построить предикат mother(X, Y), который проверяет, является ли X матерью Y.
+%Построить предикат mother(X,Y), который проверяет, является ли X матерью Y.
 %mother(+X, +Y)
 mother(X,Y):- parent(X,Y), woman(X).
 
@@ -65,7 +65,7 @@ mother(X,Y):- parent(X,Y), woman(X).
 %mother(+X)
 mother(X):- mother(Y,X), print(Y), nl, fail.
 
-%Построить предикат brother(X, Y), который проверяет, является ли X братом Y.
+%Построить предикат brother(X,Y), который проверяет, является ли X братом Y.
 %brother(+X,+Y)
 brother(X,Y):- parent(Z,Y), parent(Z,X), man(X), man(Z), X\=Y.
 
