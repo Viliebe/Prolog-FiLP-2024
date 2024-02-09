@@ -64,9 +64,6 @@ parent(miroslava,nadya).
 %grand_ma(+X,+Y)
 grand_ma(X, Y):- parent(Z,Y), parent(X,Z), woman(X).
 
-%Построить предикат grand_ma(X, Y), который проверяет, является ли X бабушкой Y. С использованием готовых предикатов.
-%grand_ma(+X,+Y)
-
 %Построить предикат grand_mas(X), который выводит всех бабушек X. Без использования готовых предикатов.
 %grand_mas(+ X)
 grand_mas(X):- parent(Z,Y), parent(Y,X), print(Z), nl, fail.
