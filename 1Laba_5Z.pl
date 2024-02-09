@@ -3,10 +3,10 @@ main :-
     fault(Problem),
     !,
     nl,
-    write('The problem is '), write(Problem), write(.), nl.
+    write('It suits you '), write(Problem), write(.), nl.
 main :-
     nl,
-    write('The problem cannot be recognized.'), nl.
+    write('We havent found a remedy for you yet.'), nl.
 
 problem(dandruff):-
     query('Do you have dandruff?').
