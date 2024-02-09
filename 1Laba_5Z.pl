@@ -1,3 +1,4 @@
+
 main :-
     retractall(asked(_,_)),
     fault(Problem),
@@ -9,51 +10,49 @@ main :-
     write('We havent found a remedy for you yet.'), nl.
 
 problem(dandruff):-
-    query('Do you have dandruff?').
+    query('You have dandruff, hearing loss or flaking?').
 
-problem(itching):-
-    query('Do you have itching and peeling?').
+problem(procedure):-
+    query('Have you ever done hair lamination or keratin?').
 
 problem(dryness):-
-    query('Has your hair become brittle and dry?').
+    query('Is your hair dry and brittle?').
 
 problem(styler):-
-    query('Do you often use a hair dryer and a hair iron?').
+    query('Do you use a hair dryer and various stylers?').
 
 problem(dirty):-
-    query('Does your hair get dirty and greasy quickly?').
+    query('Does your hair quickly become dirty and greasy?').
 
 problem(unruly):-
-    query('Do you have unruly hair?').
-
-problem(damaged):- 
-    query('Have you previously dyed your hair or had lamination/keratin done?').
+    query('Do you have unruly and falling hair?').
 
 
 
 fault('shampoo_with_salicylic_acid'):-
     problem(dandruff).
 
+fault('shampoo_with_salicylic_acid'):-
+    problem(dirty),
+    problem(dandruff).
+
 fault('shampoo_with_climbazole'):-
     problem(dandruff),
-    problem(itching).
+    problem(unruly).
 
 fault('shampoo_with_selenium_disulfide'):-
     problem(dandruff),
-    problem(itching).
+    problem(dirty).
 
 fault('regenerating_mask_with_keratin'):-
-    problem(unruly),
     problem(dryness),
     problem(styler).
 
 fault('regenerating_mask_with_collagen'):-
-    problem(styler),
     problem(dryness),
     problem(unruly).
 
 fault('regenerating_mask_hyaluronic_acid'):-
-    problem(dryness)
     problem(unruly),
     problem(styler).
 
@@ -63,7 +62,7 @@ fault('care_with_cocoa_extract'):-
 
 fault('keratin_care'):-
     problem(dryness),
-    problem(itching).
+    problem(procedure).
 
 fault('care_with_milk_protein'):-
     problem(dryness),
@@ -71,11 +70,52 @@ fault('care_with_milk_protein'):-
 
 fault('care_with_panthenol'):-
     problem(dryness),
-    problem(dandruff),
-    problem(itching).
+    problem(dandruff).
 
 fault('sulfate_free_shampoo'):-
-    problem(damaged).
+    problem(styler),
+    problem(procedure).
+
+fault('anti_yellow_shampoo'):-
+    problem(procedure).
+
+fault('biotin_mask'):-
+    problem(unruly),
+    problem(dirty).
+
+fault('multivitamin_balm_with_ginseng_extracts_and_avacado_oil'):-
+    problem(dryness),
+    problem(styler),
+    problem(dirty),
+    problem(unruly).
+
+fault('moisturizing_shampoo_with_aloe_vera'):-
+    problem(procedure),
+    problem(dryness).
+
+fault('conditioner_with_cherry_seed_oil'):-
+    problem(unruly)
+
+fault('mask with omega-6'):-
+    problem(procedure),
+    problem(unruly).
+
+fault('conditioner_for_colored_hair'):-
+    problem(procedure).
+
+fault('revitalizing_mask_with_caviar_extract'):-
+    problem(dandruff),
+    problem(unruly),
+    problem(procedure).
+
+fault('shampoo with blueberry extract and avacado oil'):-
+    problem(dandruff),
+    problem(unruly),
+    problem(procedure),
+    problem(styler),
+    problem(dirty),
+    problem(dryness).
+
 
 
 query(Prompt) :-
