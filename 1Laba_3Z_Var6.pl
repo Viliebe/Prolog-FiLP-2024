@@ -82,7 +82,7 @@ aunt(X,Y):- parent(Z,Y), parent(V,Z), parent(V,X), woman(X), woman(Z), woman(V),
 
 %Построить предикат, который проверяет, является ли X тетей Y. С использованием готовых предикатов.
 %aunt(+X,+Y)
-aunt(X,Y):- grand_ma(Z,Y), parent(Z,V), woman(X).
+aunt(X,Y):- grand_ma(Z,Y), parent(Z,V), parent(V,Y), woman(X).
 
 %Построить предикат, который выводит всех тетей X. Без использования готовых предикатов.
 %aunts(+X)
