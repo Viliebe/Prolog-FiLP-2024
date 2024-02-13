@@ -1,130 +1,101 @@
-
-main :-
-    retractall(asked(_,_)),
-    fault(Problem),
-    !,
-    nl,
-    write('It suits you '), write(Problem), write(.), nl.
-main :-
-    nl,
-    write('We havent found a remedy for you yet.'), nl.
-
 problem(dandruff):-
-    query('You have dandruff, hearing loss or flaking?').
+    query('У вас есть перхоть, зуд или шелушение?').
 
 problem(procedure):-
-    query('Have you ever done hair lamination or keratin?').
+    query('Вы когда-нибудь делали ламинирование волос или кератиновое выпрямление?').
 
 problem(dryness):-
-    query('Is your hair dry and brittle?').
+    query('Ваши волосы сухие и ломкие?').
 
 problem(styler):-
-    query('Do you use a hair dryer and various stylers?').
+    query('Пользуетесь ли вы феном или утюжком для волос?').
 
 problem(dirty):-
-    query('Does your hair quickly become dirty and greasy?').
+    query('Ваши волосы быстро становятся грязными и жирными?').
 
 problem(unruly):-
-    query('Do you have unruly and falling hair?').
+    query('У вас непослушные и выпадающие волосы?').
 
-
-
-fault('shampoo_with_salicylic_acid'):-
-    problem(dandruff).
-
-fault('shampoo_with_salicylic_acid'):-
+fault('шампунь с салициловой кислотой'):-
     problem(dirty),
     problem(dandruff).
 
-fault('shampoo_with_climbazole'):-
+fault('шампунь с климбазолом'):-
     problem(dandruff),
     problem(unruly).
 
-fault('shampoo_with_selenium_disulfide'):-
+fault('шампунь с дисульфидом селена'):-
     problem(dandruff),
     problem(dirty).
 
-fault('regenerating_mask_with_keratin'):-
+fault('восстанавливающая маска с кератином'):-
     problem(dryness),
     problem(styler).
 
-fault('regenerating_mask_with_collagen'):-
+fault('восстанавливающая маска с коллагеном'):-
     problem(dryness),
     problem(unruly).
 
-fault('regenerating_mask_hyaluronic_acid'):-
+fault('восстанавливающая маска с гиалуроновой кислотой'):-
     problem(unruly),
     problem(styler).
 
-fault('care_with_cocoa_extract'):-
+fault('бальзам с экстрактом какао'):-
     problem(damaged),
     problem(dandruff).
 
-fault('keratin_care'):-
+fault('бальзам с кератином'):-
     problem(dryness),
     problem(procedure).
 
-fault('care_with_milk_protein'):-
+fault('бальзам с молочным протеином'):-
     problem(dryness),
     problem(styler).
 
-fault('care_with_panthenol'):-
+fault('бальзам с пантенолом'):-
     problem(dryness),
     problem(dandruff).
 
-fault('sulfate_free_shampoo'):-
+fault('бессульфатный шампунь'):-
     problem(styler),
     problem(procedure).
 
-fault('anti_yellow_shampoo'):-
+fault('анти-желтый шампунь'):-
     problem(procedure).
 
-fault('biotin_mask'):-
+fault('маска с биотином'):-
     problem(unruly),
     problem(dirty).
 
-fault('multivitamin_balm_with_ginseng_extracts_and_avacado_oil'):-
+fault('мультивитаминный бальзам с экстрактами женьшеня и маслом авокадо'):-
     problem(dryness),
     problem(styler),
     problem(dirty),
     problem(unruly).
 
-fault('moisturizing_shampoo_with_aloe_vera'):-
+fault('увлажняющий шампунь с алоэ вера'):-
     problem(procedure),
     problem(dryness).
 
-fault('conditioner_with_cherry_seed_oil'):-
-    problem(unruly)
+fault('кондиционер с маслом вишневых косточек'):-
+    problem(unruly).
 
-fault('mask with omega-6'):-
+fault('маска в омега-6'):-
     problem(procedure),
     problem(unruly).
 
-fault('conditioner_for_colored_hair'):-
+fault('кондиционер для окрашенных волос'):-
     problem(procedure).
 
-fault('revitalizing_mask_with_caviar_extract'):-
+fault('шампунь с экстрактом черники и маслом авокадо'):-
     problem(dandruff),
     problem(unruly),
     problem(procedure).
 
-fault('shampoo with blueberry extract and avacado oil'):-
+fault('восстанавливающая маска с экстрактом черной икры'):-
     problem(dandruff),
     problem(unruly),
     problem(procedure),
     problem(styler),
     problem(dirty),
     problem(dryness).
-
-
-
-query(Prompt) :-
-    (   asked(Prompt, Reply) -> true
-    ;   nl, write(Prompt), write(' (y/n)? '),
-        read(X),(X = y -> Reply = y ; Reply = n),
-	assert(asked(Prompt, Reply))
-    ),
-    Reply = y.
-
-
-
