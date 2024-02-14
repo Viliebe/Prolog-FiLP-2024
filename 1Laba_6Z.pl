@@ -4,106 +4,106 @@ main :-
     fault(Problem),
     !,
     nl,
-    write('Вам подходит '), write(Problem), write(.), nl.
+    write('Suits you '), write(Problem), write(.), nl.
 main :-
     nl,
-    write('Пока что для вас нет подходящего средства.'), nl.
+    write('There is currently no suitable remedy for you.'), nl.
 
 problem(dandruff):-
-    query('У вас есть перхоть, зуд или шелушение?').
+    query('U vas est perhot, zud ili shelushenia?').
 
 problem(procedure):-
-    query('Вы когда-нибудь делали ламинирование волос или кератиновое выпрямление?').
+    query('vi kogda-nibud delali laminirovanie volos ili keratinovoe vipryamlenie').
 
 problem(dryness):-
-    query('Ваши волосы сухие и ломкие?').
+    query('Vashi volosi suhie i lomkie?').
 
 problem(styler):-
-    query('Пользуетесь ли вы феном или утюжком для волос?').
+    query('Polzuetes li vu fenom ili utyugom dlya volos?').
 
 problem(dirty):-
-    query('Ваши волосы быстро становятся грязными и жирными?').
+    query('Vashi volosi bistro stanovyztsya gryaznumi i jirnumi?').
 
 problem(unruly):-
-    query('У вас непослушные и выпадающие волосы?').
+    query('U vas vipadayuschie i neposlushnie volosi?').
 
-fault('шампунь с салициловой кислотой'):-
+fault('shampoo with salicylic acid'):-
     problem(dirty),
     problem(dandruff).
 
-fault('шампунь с климбазолом'):-
+fault('shampoo with climbazole'):-
     problem(dandruff),
     problem(unruly).
 
-fault('шампунь с дисульфидом селена'):-
+fault('shampoo with selenium disulfide'):-
     problem(dandruff),
     problem(dirty).
 
-fault('восстанавливающая маска с кератином'):-
+fault('restorative mask with keratin'):-
     problem(dryness),
     problem(styler).
 
-fault('восстанавливающая маска с коллагеном'):-
+fault('revitalizing mask with collagen'):-
     problem(dryness),
     problem(unruly).
 
-fault('восстанавливающая маска с гиалуроновой кислотой'):-
+fault('revitalizing mask with hyaluronic acid'):-
     problem(unruly),
     problem(styler).
 
-fault('бальзам с экстрактом какао'):-
+fault('balm with cocoa extract'):-
     problem(damaged),
     problem(dandruff).
 
-fault('бальзам с кератином'):-
+fault('balm with keratin'):-
     problem(dryness),
     problem(procedure).
 
-fault('бальзам с молочным протеином'):-
+fault('milk protein balm'):-
     problem(dryness),
     problem(styler).
 
-fault('бальзам с пантенолом'):-
+fault('balm with panthenol'):-
     problem(dryness),
     problem(dandruff).
 
-fault('бессульфатный шампунь'):-
+fault('sulfate-free shampoo'):-
     problem(styler),
     problem(procedure).
 
-fault('анти-желтый шампунь'):-
+fault('anti-yellow shampoo'):-
     problem(procedure).
 
-fault('маска с биотином'):-
+fault('biotin mask'):-
     problem(unruly),
     problem(dirty).
 
-fault('мультивитаминный бальзам с экстрактами женьшеня и маслом авокадо'):-
+fault('multivitamin balm with ginseng extracts and avocado oil'):-
     problem(dryness),
     problem(styler),
     problem(dirty),
     problem(unruly).
 
-fault('увлажняющий шампунь с алоэ вера'):-
+fault('moisturizing shampoo with aloe vera'):-
     problem(procedure),
     problem(dryness).
 
-fault('кондиционер с маслом вишневых косточек'):-
+fault('conditioner with cherry seed oil'):-
     problem(unruly).
 
-fault('маска в омега-6'):-
+fault('omega-6 mask'):-
     problem(procedure),
     problem(unruly).
 
-fault('кондиционер для окрашенных волос'):-
+fault('conditioner for colored hair'):-
     problem(procedure).
 
-fault('шампунь с экстрактом черники и маслом авокадо'):-
+fault('shampoo with blueberry extract and avocado oil'):-
     problem(dandruff),
     problem(unruly),
     problem(procedure).
 
-fault('восстанавливающая маска с экстрактом черной икры'):-
+fault('restorative mask with black caviar extract'):-
     problem(dandruff),
     problem(unruly),
     problem(procedure),
