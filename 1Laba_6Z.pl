@@ -7,7 +7,7 @@ main :-
     write('Вам подходит '), write(Problem), write(.), nl.
 main :-
     nl,
-    write('Мы еще не нашли для вас решения.'), nl.
+    write('Пока что для вас нет подходящего средства.'), nl.
 
 problem(dandruff):-
     query('У вас есть перхоть, зуд или шелушение?').
@@ -110,6 +110,7 @@ fault('восстанавливающая маска с экстрактом черной икры'):-
     problem(styler),
     problem(dirty),
     problem(dryness).
+
 
 query(Prompt) :-
     (   asked(Prompt, Reply) -> true
