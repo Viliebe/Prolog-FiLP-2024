@@ -52,7 +52,7 @@ fault('revitalizing mask with hyaluronic acid'):-
     problem(styler).
 
 fault('balm with cocoa extract'):-
-    problem(damaged),
+    problem(unruly),
     problem(dandruff).
 
 fault('balm with keratin'):-
