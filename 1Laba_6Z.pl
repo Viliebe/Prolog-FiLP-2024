@@ -103,14 +103,6 @@ fault('shampoo with blueberry extract and avocado oil'):-
     problem(unruly),
     problem(procedure).
 
-fault('restorative mask with black caviar extract'):-
-    problem(dandruff),
-    problem(unruly),
-    problem(procedure),
-    problem(styler),
-    problem(dirty),
-    problem(dryness).
-
 
 query(Prompt) :-
     (   asked(Prompt, Reply) -> true
