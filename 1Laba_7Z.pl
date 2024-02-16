@@ -55,10 +55,6 @@ fault('balm with cocoa extract'):-
     problem(unruly),
     problem(dandruff).
 
-fault('balm with keratin'):-
-    problem(dryness),
-    problem(procedure).
-
 fault('milk protein balm'):-
     problem(dryness),
     problem(styler).
@@ -86,7 +82,7 @@ fault('multivitamin balm with ginseng extracts and avocado oil'):-
 
 fault('moisturizing shampoo with aloe vera'):-
     problem(procedure),
-    problem(dryness).
+    problem(dryness),!.
 
 fault('conditioner with cherry seed oil'):-
     problem(unruly).
