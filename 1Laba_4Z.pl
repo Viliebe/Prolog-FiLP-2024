@@ -6,7 +6,7 @@ main :-
     write('The problem is '), write(Problem), write(.), nl.
 main :-
     nl,
-    write('The problem cannot be recognized.'), nl.
+    write('The problem cannot be recognized. '), nl.
 
 problem(disc_format) :-
     query('Does the computer show error cannot format').
