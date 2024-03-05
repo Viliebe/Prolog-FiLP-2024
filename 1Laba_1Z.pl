@@ -48,7 +48,7 @@ parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
 
-%Задание 1
+%Задание 1 
 %Построить предикаты men и women, которые выводят на экран всех мужчин и всех женщин соответственно.
 men():- man(X), print(X), nl, fail.
 women():- woman(X), print(X), nl, fail.
