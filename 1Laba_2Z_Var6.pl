@@ -49,7 +49,7 @@ parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
 
 %Построить предикат daughter(X,Y), который проверяет, является ли X дочерью Y.
-%daughter(+X,+Y)
+%daughter(+X,+Y) 
 daughter(X,Y):- parent(Y,X), woman(X).
 
 %Построить предикат, daughter(X), который выводит дочь X.
