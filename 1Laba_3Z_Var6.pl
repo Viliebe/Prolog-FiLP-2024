@@ -85,5 +85,5 @@ aunt(X,Y):- parent(Z,Y), parent(V,Z), parent(V,X), woman(X), woman(Z), woman(V),
 aunt(X,Y):- grand_ma(Z,Y), parent(Z,V), parent(V,Y), woman(X).
 
 %Построить предикат, который выводит всех тетей X. Без использования готовых предикатов.
-%aunts(+X)
+%aunts(+X) 
 aunts(X):- aunt(Z,X), print(Z), nl, fail.
