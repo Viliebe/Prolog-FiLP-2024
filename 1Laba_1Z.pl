@@ -7,6 +7,8 @@ man(svyatoslav).
 man(dobrozhir).
 man(bogomil).
 man(zlatomir).
+man(rostislav).
+man(rostislavchik).
 
 woman(goluba).
 woman(lubomila).
@@ -17,6 +19,9 @@ woman(bozhedara).
 woman(broneslava).
 woman(veselina).
 woman(zdislava).
+woman(miroslava).
+woman(mirovlada).
+woman(nadya).
 
 parent(voeneg,ratibor).
 parent(voeneg,bratislava).
@@ -47,6 +52,14 @@ parent(duhovlad,zdislava).
 parent(duhovlad,zlatomir).
 parent(zhdana,zdislava).
 parent(zhdana,zlatomir).
+
+parent(miroslava,velerad).
+parent(miroslava,veslava).
+parent(mirovlada,duhovlad).
+parent(mirovlada,zhdana).
+parent(miroslava,nadya).
+
+
 
 %Задание 1 
 %Построить предикаты men и women, которые выводят на экран всех мужчин и всех женщин соответственно.
@@ -80,3 +93,53 @@ b_s(X,Y):- parent(Z,Y), parent(Z,X), man(Z), X\=Y.
 %Построить предикат b_s(X), который выводит всех братьев или сестер X.
 %b_s(+X)
 b_s(X):- b_s(Z,X),print(Z), nl, fail.
+
+
+
+%Задание 2
+%Построить предикат daughter(X,Y), который проверяет, является ли X дочерью Y.
+%daughter(+X,+Y) 
+daughter(X,Y):- parent(Y,X), woman(X).
+
+%Построить предикат, daughter(X), который выводит дочь X.
+%daughter(+X)
+daughter(X):- daughter(Z,X), print(Z),!.
+
+%Построить предикат husband(X,Y), который проверяет, является ли X мужем Y.
+%husband(+X,+Y)
+husband(X,Y):-parent(X,Z), parent(Y,Z), man(X).
+
+%Построить предикат husband(X), который выводит мужа X.
+%husband(+X)
+husband(X):=husband(Z,X),!.
+
+
+
+%Задание 3
+%Построить предикат grand_ma(X, Y), который проверяет, является ли X бабушкой Y. Без использования готовых предикатов.
+%grand_ma(+X,+Y)
+grand_ma(X, Y):- parent(Z,Y), parent(X,Z), woman(X).
+
+%Построить предикат grand_mas(X), который выводит всех бабушек X. Без использования готовых предикатов.
+%grand_mas(+ X)
+grand_mas(X):- parent(Z,Y), parent(Y,X), print(Z), nl, fail.
+
+%Построить предикат grand_ma_and_da(X,Y), который проверяет, являются ли X и Y бабушкой и внучкой или внучкой и бабушкой. Без использования готовых предикатов.
+%grand_ma_and_da(+X,+Y)
+grand_ma_and_da(X,Y):- parent(Y,Z), parent(Z,X), woman(X), woman(Y); parent(X,Z), parent(Z,Y), woman(Y), woman(X).
+
+%Построить предикат grand_ma_and_da(X,Y), который проверяет, являются ли X и Y бабушкой и внучкой или внучкой и бабушкой. С использованием готовых предикатов.
+%grand_ma_and_da(+X,+Y)
+grand_ma_and_da(X,Y):- grand_ma(X,Y); grand_ma(Y,X), woman(Y).
+
+%Построить предикат, который проверяет, является ли X тетей Y. Без использования готовых предикатов.
+%aunt(+X,+Y)
+aunt(X,Y):- parent(Z,Y), parent(V,Z), parent(V,X), woman(X), woman(Z), woman(V), X\=Z.
+
+%Построить предикат, который проверяет, является ли X тетей Y. С использованием готовых предикатов.
+%aunt(+X,+Y)
+aunt(X,Y):- grand_ma(Z,Y), parent(Z,V), parent(V,Y), woman(X).
+
+%Построить предикат, который выводит всех тетей X. Без использования готовых предикатов.
+%aunts(+X) 
+aunts(X):- aunt(Z,X), print(Z), nl, fail.
