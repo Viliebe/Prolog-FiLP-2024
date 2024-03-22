@@ -32,12 +32,13 @@ sum_num_up(N1,S1),
 S is S1+N mod 10.
 
 %Рекурсия вниз
-%sum_num_down(+N,-S).
-sum_num_down(N,S):-sum_num_down(N,S,0).
-sum_num_down(0,S,S).
-sum_num_down(N,S,A):-A1 is A+N mod 10,
+%sum_um_down(+N,-S).
+%cifr_sum_down(+N,-S)
+cifr_sum_down(N,S):-cifr_sum_down(N,S,0).
+cifr_sum_down(0,S,S):-!.
+cifr_sum_down(N,S,X):-X1 is X + N mod 10,
 N1 is N div 10,
-sum_num_down(N1,S,A1).
+cifr_sum_down(N1,S,X1).
 
 %Проверить, является ли число свободным от квадратов.
 %call_square_free(+Num)
@@ -81,3 +82,39 @@ sum_cifr_del([],[],Number).
 sum_cifr_del([H|T],X,Number):-cifr_sum_down(H,Sum),
 Sum==Number,sum_cifr_del(T,X,Number). 
 sum_cifr_del([H|X],[H|Y],Number):-sum_cifr_del(X,Y,Number). 
+
+
+
+%Задание 2 Вариант 6
+%Найти минимальную цифру числа.
+%min_cifr(+Number,-Result)
+min_cifr(Number,Result):-min_cifr(Number,10,Result).
+
+min_cifr(0,Result,Result):-!.
+
+min_cifr(Number,Min,Result):-Cifr is Number mod 10,
+Cifr < Min,
+Number_temp is Number div 10,
+min_cifr(Number_temp,Cifr,Result).
+
+min_cifr(Number,Min,Result):-
+Number_temp is Number div 10,
+min_cifr(Number_temp,Min,Result).
+
+%Найти количество цифр числа, меньших 3
+%kolvo(num, -count)
+kolvo(Number, Count) :-
+    kolvo_helper(Number, 0, Count).
+
+kolvo_helper(0, Count, Count):-!.
+kolvo_helper(Number, Acc, Count) :-
+    Digit is Number mod 10,
+    Digit < 3,
+    NewNumber is Number div 10,
+    NewAcc is Acc + 1,
+    kolvo_helper(NewNumber, NewAcc, Count).
+
+kolvo_helper(Number, Acc, Count) :-
+    NewNumber is Number div 10,
+    kolvo_helper(NewNumber, Acc, Count).
+
