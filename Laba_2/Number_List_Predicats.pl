@@ -118,3 +118,19 @@ kolvo_helper(Number, Acc, Count) :-
     NewNumber is Number div 10,
     kolvo_helper(NewNumber, Acc, Count).
 
+%Найти количество делителей числа
+%count_divisors(+N, -Count)
+divisors(X, Y) :- 0 is X mod Y.
+count_divisors(N, Count) :- count_divisors(N, 1, 0, Count).
+
+count_divisors(N, N, Acc, Count) :- Count is Acc + 1.
+count_divisors(N, I, Acc, Count) :-
+    I < N,
+    0 is N mod I,
+    NewAcc is Acc + 1,
+    NextI is I + 1,
+    count_divisors(N, NextI, NewAcc, Count).
+count_divisors(N, I, Acc, Count) :-
+    I < N,
+    NextI is I + 1,
+    count_divisors(N, NextI, Acc, Count).
