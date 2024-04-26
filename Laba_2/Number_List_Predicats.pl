@@ -134,3 +134,35 @@ count_divisors(N, I, Acc, Count) :-
     I < N,
     NextI is I + 1,
     count_divisors(N, NextI, Acc, Count).
+
+%Задание 5 Вариант 6
+%Найти сумму непростых делителей числа.
+%Найти количество чисел, не являющихся делителями исходного числа, 
+%не взаимнопростых   ними и взаимно простых с суммой простых чисел этого числа.
+pr(2):-!.
+pr(X):-pr1(X,2).
+pr1(X,X):-!.
+pr1(X,I):- Y is X mod I, Y\=0, I1 is I+1, pr1(X,I1).
+
+vs(_,1):- !.
+vs(X,Y):-0 is X mod Y,!,fail.
+vs(X,Y):-NewY is X mod Y, NewX is Y, vs(NewX,NewY).
+
+sum_chis(Num, Ans):- sum_chis(Num, 0, Ans).
+sum_chis(0, Ans, Ans):- !.
+sum_chis(Num, CAns, Ans):- NCAns is (CAns + (Num mod 10)), NNum is Num //10, sum_chis(NNum, NCAns, Ans).
+
+sum_del(Num, X) :- sum_del(Num, 0, X, Num).
+sum_del(_, X, CX, 1) :- CX is X + 1, !.
+sum_del(Num, CSum, Sum, Del):- 
+        (pr(Del) ->
+        (NCSum is CSum);
+        (NCSum is CSum + Del)),
+        NDel is Del - 1, sum_del(Num, NCSum, Sum, NDel).
+
+colvo(Num, Ans) :- col_chis(Num, 0, Num, Ans).
+col_chis(_,Col,1,Col) :- !.
+col_chis(Num, CCol, Del, Ans) :- ((Num mod Del =\= 0, vs(Del, Num), 
+                                sum_chis(Num, SNum), vs(SNum, Del)) ->
+                                NCCol is CCol + 1 ; NCCol is CCol),
+                                NDel is Del - 1, col_chis(Num, NCCol, NDel, Ans).
