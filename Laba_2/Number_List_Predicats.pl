@@ -166,3 +166,23 @@ col_chis(Num, CCol, Del, Ans) :- ((Num mod Del =\= 0, vs(Del, Num),
                                 sum_chis(Num, SNum), vs(SNum, Del)) ->
                                 NCCol is CCol + 1 ; NCCol is CCol),
                                 NDel is Del - 1, col_chis(Num, NCCol, NDel, Ans).
+
+%Задание 6 Вариант 6
+%145 - любопытное число, как 1! + 4! + 5! = 1 + 24 + 120 = 145
+%Найдите сумму всех чисел, которые равны сумме факториала их цифр.
+%Примечание: как 1! = 1 и 2! = 2 не являются суммами, они не включены.
+%Задача должна быть решена без использования списков.                 
+% Предикат, вычисляющий факториал числа
+
+% Предикат, проверяющий, является ли число суммой факториалов его цифр
+fun(Num, Ans):- fun(Num, 0, Ans).
+fun(0, Ans, Ans):- !.
+fun(Num, CAns, Ans):- Temp is Num mod 10, fact(Temp, X), NCAns is CAns + X,
+                             NNum is Num //10, fun(NNum, NCAns, Ans).
+
+main:- main(100000).
+main(2):- !.
+main(Num):- fun(Num, X), NNum is Num - 1,
+            (X =:= Num ->
+            (write(Num), nl, main(NNum));
+            main(NNum)).
