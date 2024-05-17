@@ -181,4 +181,51 @@ public class CombObject {
 //            e.printStackTrace();
 //        }
 //    }
+
+
+//ЗАДАНИЕ 3 ВАРИАНТ 6 ОБЪЕКТ 10: СЛОВА ДЛИНЫ 9,
+    // В КОТОРЫХ РОВНО 2 БУКВЫ ПОВТОРЯЮТСЯ 2 РАЗА,
+    // РОВНО ОДНА БУКВА ПОВТОРЯЕТСЯ ТРИ РАЗА,
+    // ОСТАЛЬНЫЕ БУКВЫ НЕ ПОВТОРЯЮТСЯ НЕ РЕКУРСИЯ
+    // public static void main(String[] args) {
+    //     String alphabet = "ABCDEFGHIJ";
+    //     generateAndWriteWords(alphabet, "WORD.txt");
+    // }
+
+    // private static void generateAndWriteWords(String alphabet, String fileName) {
+    //     try (FileWriter writer = new FileWriter(fileName)) {
+    //         for (int i = 0; i < alphabet.length(); i++) {
+    //             char repeatChar1 = alphabet.charAt(i);
+    //             for (int j = 0; j < alphabet.length(); j++) {
+    //                 char repeatChar2 = alphabet.charAt(j);
+    //                 if (j == i) continue;
+    //                 for (int k = 0; k < alphabet.length(); k++) {
+    //                     char repeatChar3 = alphabet.charAt(k);
+    //                     if (k == i || k == j) continue;
+    //                     for (int l = 0; l < alphabet.length(); l++) {
+    //                         if (l == i || l == j || l == k) continue;
+    //                         for (int m = 0; m < alphabet.length(); m++) {
+    //                             if (m == i || m == j || m == k || m == l) continue;
+    //                             for (int n = 0; n < alphabet.length(); n++) {
+    //                                 if (n == i || n == j || n == k || n == l || n == m) continue;
+    //                                 for (int o = 0; o < alphabet.length(); o++) {
+    //                                     if (o == i || o == j || o == k || o == l || o == m || o == n) continue;
+    //                                     for (int p = 0; p < alphabet.length(); p++) {
+    //                                         if (p == i || p == j || p == k || p == l || p == m || p == n || p == o) continue;
+    //                                         for (int q = 0; q < alphabet.length(); q++) {
+    //                                             if (q == i || q == j || q == k || q == l || q == m || q == n || q == o || q == p) continue;
+    //                                             writer.write(repeatChar1 + "" + repeatChar1 + alphabet.charAt(l) + repeatChar2 + "" + repeatChar2 + alphabet.charAt(o) + repeatChar3 + "" + repeatChar3 + alphabet.charAt(q) + "\n");
+    //                                         }
+    //                                     }
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }
