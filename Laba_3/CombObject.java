@@ -104,44 +104,81 @@ public class CombObject {
     // }
 
     //ЗАДАНИЕ 3 ВАРИАНТ 6 ОБЪЕКТ 4: СОЧЕТАНИЯ С ПОВТОРЕНИЯМИ НЕ РЕКУРСИЯ
-    public static void main(String[] args) {
-        int n = 5; // Количество элементов в наборе
-        int k = 3; // Максимальное количество повторений для каждого элемента
-        try {
-            generateAndWriteNonRecursiveCombinations(n, k, "", "NOREPEAT.txt");
-        } catch (IOException e) {
-            System.out.println("Ошибка при записи в файл: " + e.getMessage());
-        }
-    }
+    // public static void main(String[] args) {
+    //     int n = 5; // Количество элементов в наборе
+    //     int k = 3; // Максимальное количество повторений для каждого элемента
+    //     try {
+    //         generateAndWriteNonRecursiveCombinations(n, k, "", "NOREPEAT.txt");
+    //     } catch (IOException e) {
+    //         System.out.println("Ошибка при записи в файл: " + e.getMessage());
+    //     }
+    // }
 
-    private static void generateAndWriteNonRecursiveCombinations(int n, int k, String prefix, String fileName) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+    // private static void generateAndWriteNonRecursiveCombinations(int n, int k, String prefix, String fileName) throws IOException {
+    //     BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
 
-        // Инициализация массива для хранения текущего сочетания
-        int[] combination = new int[n];
-        Arrays.fill(combination, 0); // Заполняем массив нулями, чтобы обозначить отсутствие выбранного элемента
+    //     // Инициализация массива для хранения текущего сочетания
+    //     int[] combination = new int[n];
+    //     Arrays.fill(combination, 0); // Заполняем массив нулями, чтобы обозначить отсутствие выбранного элемента
 
-        // Генерация сочетаний
-        for (int i = 0; i < Math.pow(k + 1, n); i++) {
-            StringBuilder sb = new StringBuilder(prefix);
-            for (int j = 0; j < n; j++) {
-                sb.append(combination[j]);
-            }
-            sb.append("\n");
-            writer.write(sb.toString());
+    //     // Генерация сочетаний
+    //     for (int i = 0; i < Math.pow(k + 1, n); i++) {
+    //         StringBuilder sb = new StringBuilder(prefix);
+    //         for (int j = 0; j < n; j++) {
+    //             sb.append(combination[j]);
+    //         }
+    //         sb.append("\n");
+    //         writer.write(sb.toString());
 
-            // Переход к следующему сочетанию
-            int carry = 1;
-            for (int j = n - 1; j >= 0; j--) {
-                combination[j] += carry;
-                carry = 0;
-                if (combination[j] > k) {
-                    combination[j] -= k + 1;
-                    carry = 1;
-                }
-            }
-        }
+    //         // Переход к следующему сочетанию
+    //         int carry = 1;
+    //         for (int j = n - 1; j >= 0; j--) {
+    //             combination[j] += carry;
+    //             carry = 0;
+    //             if (combination[j] > k) {
+    //                 combination[j] -= k + 1;
+    //                 carry = 1;
+    //             }
+    //         }
+    //     }
 
-        writer.close();
-    }
+    //     writer.close();
+    // }
+
+
+    //ЗАДАНИЕ 3 ВАРИАНТ 6 ОБЪЕКТ 7: СЛОВА ДЛИНЫ 5,
+    // В КОТОРЫХ РОВНО ОДНА БУКВА ПОВТОРЯЕТСЯ 2 РАЗА,
+    // ОСТАЛЬНЫЕ БУКВЫ НЕ ПОВТОРЯЮТСЯ НЕ РЕКУРСИЯ
+//    public static void main(String[] args) {
+//        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//        generateAndWriteWords(alphabet, "WORDS.txt");
+//    }
+//
+//    private static void generateAndWriteWords(String alphabet, String fileName) {
+//        try (FileWriter writer = new FileWriter(fileName)) {
+//            for (int i = 0; i < alphabet.length(); i++) {
+//                char repeatChar = alphabet.charAt(i);
+//                for (int j = 0; j < alphabet.length(); j++) {
+//                    if (j == i) continue;
+//                    for (int k = 0; k < alphabet.length(); k++) {
+//                        if (k == i || k == j) continue;
+//                        for (int l = 0; l < alphabet.length(); l++) {
+//                            if (l == i || l == j || l == k) continue;
+//                            for (int m = 0; m < alphabet.length(); m++) {
+//                                if (m == i) {
+//                                    writer.write(repeatChar + "" + alphabet.charAt(j) + alphabet.charAt(k) + alphabet.charAt(l) + repeatChar + "\n");
+//                                } else if (m == j || m == k || m == l) {
+//                                    continue;
+//                                } else {
+//                                    writer.write(alphabet.charAt(m) + "" + alphabet.charAt(j) + alphabet.charAt(k) + alphabet.charAt(l) + alphabet.charAt(i) + "\n");
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
