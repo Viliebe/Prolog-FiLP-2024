@@ -166,13 +166,33 @@ uniq_check(Words,Words,[],Res),
 write_file(FileOut,Res).
 
 %Задание 4
-%write_razmno(+Alphabet,+N,+FileName)
-write_razmno(Alphabet,N,FileName):-open(FileName,write,Stream),findall(Razm,razm_no_povt(Alphabet,N,[],Razm),ResL),write_file(FileName,ResL),close(Stream).
-razm_no_povt(_,0,Razm,Razm):-!.
-razm_no_povt([H|T],NCur,RazmCur,Res):-in_list([H|T],El),not(in_list(RazmCur,El)),NNew is NCur-1,razm_no_povt([H|T],NNew,[El|RazmCur],Res).
+%4.1(3)
+% subsets([1, 2, 3], 'subsets.txt').
+subsets(List, OutputFile) :-
+    open(OutputFile, write, Stream),
+    findall(Subset, subset(List, Subset), Subsets),
+    write(Stream, Subsets), nl(Stream),
+    close(Stream).
 
+subset([], []).
+subset([H|T], [H|Sub]) :-
+    subset(T, Sub).
+subset([_|T], Sub) :-
+    subset(T, Sub).
+%4.2(4)
 %write_sochp(+Alphabet,+N,+FileName)
-write_sochp(Alphabet,N,FileName):-open(FileName,write,Stream),findall(Soch,sochet_povt(Soch,Alphabet,N),SochL),write_file(FileName,SochL),close(Stream).
+write_sochp(Alphabet,N,FileName):-
+open(FileName,write,Stream),
+findall(Soch,sochet_povt(Soch,Alphabet,N),SochL),
+write_file(FileName,SochL),close(Stream).
 sochet_povt([],_,0):-!.
-sochet_povt([H|Sub_set],[H|Set],K):-K1 is K-1, sochet_povt(Sub_set,[H|Set],K1).
-sochet_povt(Sub_set,[H|Set],K):-sochet_povt(Sub_set,Set,K).
+sochet_povt([H|Sub_set],[H|Set],K):-
+K1 is K-1, sochet_povt(Sub_set,[H|Set],K1).
+sochet_povt(Sub_set,[H|Set],K):-
+sochet_povt(Sub_set,Set,K).
+
+%4.3(7)
+
+
+
+%4.4(10)
