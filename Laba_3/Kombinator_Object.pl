@@ -160,3 +160,12 @@ write_words(Stream, [Word|T]) :-
 
 % Предикат для алфавита
 alphabet([a, b, c, d, e, f, g, h, i, j]).
+
+
+
+
+
+rep([],[]).
+rep(List, [X|Tail]):-
+select(X,List,Res),
+rep(Res,Tail).
