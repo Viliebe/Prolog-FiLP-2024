@@ -1,0 +1,3 @@
+346198 minNumRecUP
+120354 kolNum
+12 delsNum
