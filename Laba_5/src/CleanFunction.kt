@@ -105,6 +105,6 @@ class CleanFunction {
         //val x: Int = scanner.nextInt()
         println(kolNum3RecUP(8712))
     }
-}
+} 
 
 fun main() = CleanFunction().main()
