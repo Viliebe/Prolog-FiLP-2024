@@ -19,4 +19,4 @@ fun findCuriousNumbersSum(limit: Int): Int {
 fun main() {
     val result = findCuriousNumbersSum(100000)
     println(result)
-}
+} 
